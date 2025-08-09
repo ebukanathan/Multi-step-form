@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  height: 100vh;
+  background-color: whitesmoke;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  background-image: url("/imgs/bg-sidebar-desktop.svg");
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    background-image: url("/imgs/bg-sidebar-mobile.svg");
+  }
+}
+@media (max-width: 768px) {
+  .step {
+    position: fixed;
+    top: 13%;
+    left: 10%;
+  }
+
+  .sidebar {
+    background-image: url("/imgs/bg-sidebar-mobile.svg");
+  }
+}
