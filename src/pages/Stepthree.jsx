@@ -1,7 +1,12 @@
 import React from "react";
 import AddonCard from "../components/AddonCard";
 
-function Stepthree() {
+function Stepthree({ setFormData, formData }) {
+  const HandleCardClick = (item) => {
+    setFormData((prev) => ({ ...prev, addon: [...prev.addon, item] }));
+    console.log(formData);
+  };
+
   const addons = [
     {
       service: "online service",
@@ -33,6 +38,7 @@ function Stepthree() {
             service={item.service}
             desc={item.desc}
             price={item.price}
+            onClick={() => HandleCardClick(item)}
           />
         ))}
       </div>

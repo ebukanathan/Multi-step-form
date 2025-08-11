@@ -3,7 +3,7 @@ import React from "react";
 function SideComponents({ no, sub, desc, onClick, step }) {
   return (
     <div
-      className="w-[200px] h-[70px] flex border-0 rounded-lg  justify-evenly items-center  hover: cursor-pointer"
+      className="w-[200px] h-[70px]  flex border-0 rounded-lg  justify-around items-center  hover: cursor-pointer"
       onClick={onClick}
     >
       <div
@@ -13,7 +13,7 @@ function SideComponents({ no, sub, desc, onClick, step }) {
       >
         {no}
       </div>
-      <div className="flex flex-col items-start gap-y-0 justify-center ">
+      <div className="  w-2/3 flex flex-col items-start gap-y-0 justify-center ">
         <div className="font-normal text-orange-500  pt-0">{sub}</div>
         <div className="font-semibold text-md uppercase text-orange-800  flex flex-col items-start pt-0">
           {desc}

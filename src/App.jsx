@@ -23,7 +23,15 @@ function Indicator({ num, step }) {
 function App() {
   const [step, setStep] = useState(1);
   const [mainsub, setMainsub] = useState([]);
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    phone: "",
+    plan: [],
+    addon: [],
+  });
 
+  console.log(formData);
   const HandleNextstep = () => {
     if (step == 4) {
       return;
@@ -41,9 +49,11 @@ function App() {
     setStep(n);
   };
 
-  // const HandAddtomain = (item) => {
-  //   setMainsub({ ...mainsub, item });
-  // };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const sideContent = [
     { id: 1, step: "STEP 1", description: "YOUR INFO" },
@@ -80,11 +90,20 @@ function App() {
           
           </h2> */}
           <div className="">
-            {step === 1 && <Stepone />}
-            {step === 2 && (
-              <Steptwo setMainsub={setMainsub} mainsub={mainsub} />
+            {step === 1 && (
+              <Stepone
+                fullname={formData.fullname}
+                email={formData.email}
+                phone={formData.phone}
+                handleChange={handleChange}
+              />
             )}
-            {step === 3 && <Stepthree />}
+            {step === 2 && (
+              <Steptwo formData={formData} setFormData={setFormData} />
+            )}
+            {step === 3 && (
+              <Stepthree formData={formData} setFormData={setFormData} />
+            )}
             {step === 4 && <Stepfour />}
           </div>
           <div className="hidden w-3/4  md:flex justify-between absolute bottom-5">
