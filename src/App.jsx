@@ -22,7 +22,8 @@ function Indicator({ num, step }) {
 
 function App() {
   const [step, setStep] = useState(1);
-  const [mainsub, setMainsub] = useState([]);
+
+  const [monthly, setMonthly] = useState(true);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -55,12 +56,18 @@ function App() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const HandleSwitch = () => {
+    setMonthly((s) => !s);
+  };
+
   const sideContent = [
     { id: 1, step: "STEP 1", description: "YOUR INFO" },
     { id: 2, step: "STEP 2", description: "SELECT PLAN" },
     { id: 3, step: "STEP 3", description: "ADD-ONS" },
     { id: 4, step: "STEP 4", description: "SUMMARY" },
   ];
+
+  console.log(monthly);
 
   return (
     <>
@@ -86,6 +93,7 @@ function App() {
         </div>
         <div className="step flex flex-col justify-start items-center h-[60%] p-3 bg-white w-[80%] mx-auto rounded-xl md:h-[100%] md:col-start-2 md:col-end-4 md:w-[100%] md:pt-3 md:relative">
           <h1>{step}</h1>
+
           {/* <h2> 
           
           </h2> */}
@@ -99,12 +107,21 @@ function App() {
               />
             )}
             {step === 2 && (
-              <Steptwo formData={formData} setFormData={setFormData} />
+              <Steptwo
+                formData={formData}
+                setFormData={setFormData}
+                monthly={monthly}
+                HandleSwitch={HandleSwitch}
+              />
             )}
             {step === 3 && (
-              <Stepthree formData={formData} setFormData={setFormData} />
+              <Stepthree
+                formData={formData}
+                setFormData={setFormData}
+                monthly={monthly}
+              />
             )}
-            {step === 4 && <Stepfour />}
+            {step === 4 && <Stepfour formData={formData} setStep={setStep} />}
           </div>
           <div className="hidden w-3/4  md:flex justify-between absolute bottom-5">
             <button onClick={HandleGoBack} className="p-2 text-slate-950  ">

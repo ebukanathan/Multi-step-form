@@ -1,11 +1,12 @@
 import React from "react";
 
-function ToggleSwitch({ HandleChange }) {
+function ToggleSwitch({ HandleChange, check }) {
   return (
     <div className="">
       <label className="inline-flex items-center cursor-pointer">
         <input
           type="checkbox"
+          checked={check}
           value=""
           className="sr-only peer"
           onChange={HandleChange}

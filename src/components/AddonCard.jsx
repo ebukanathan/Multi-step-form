@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddonCard({ service, desc, price, onClick, checked }) {
+function AddonCard({ service, desc, price, onClick, checked, monthly }) {
   return (
     <div
       className="flex  border-2 rounded-md p-2 items-center my-2 justify-between hover:border-blue-950"
@@ -17,7 +17,9 @@ function AddonCard({ service, desc, price, onClick, checked }) {
           <div className="font-normal text-sm">{desc}</div>
         </div>
       </div>
-      <div className="text-lg font-medium">{`+$${price}/mo`}</div>
+      <div className="text-lg font-medium">{`+$${price}/${
+        monthly ? "mo" : "yr"
+      }`}</div>
     </div>
   );
 }
