@@ -1,11 +1,6 @@
 import React from "react";
 
 function Stepfour({ formData, setStep }) {
-  const addie = [
-    { id: 14, name: "large", price: 20 },
-    { id: 15, name: "custom", price: 190 },
-  ];
-
   const here = formData;
 
   const calculate = () => {
