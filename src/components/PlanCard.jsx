@@ -5,7 +5,7 @@ function PlanCard({ src, plan, price, valid, option, onClick }) {
   // console.log(validity);
   return (
     <div
-      className="rounded-md  border-2 p-2 flex flex-col w-[150px] h-[180px] hover:border-blue-700 duration-[.9s]"
+      className="rounded-md  border-2 p-2 flex flex-col w-[150px] h-[180px] hover:border-blue-700 duration-[.9s] active:border-blue-700"
       onClick={onClick}
     >
       <img src={src} alt="" className="w-[40px] h-[40px] mb-8" />

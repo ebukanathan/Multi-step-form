@@ -1,6 +1,12 @@
 import React from "react";
 
-function Stepone({ fullname, email, phone, handleChange }) {
+function Errormessage(msg) {
+  return;
+}
+
+function Stepone({ fullname, email, phone, handleChange, err }) {
+  const error = err;
+
   return (
     <div className="w-full bg-white flex flex-col p-3">
       <h2 className="text-3xl font-semibold mb-4">Personal info</h2>
@@ -16,9 +22,14 @@ function Stepone({ fullname, email, phone, handleChange }) {
           type="text"
           value={fullname}
           placeholder="e.g. Stephen King"
-          className="border-2 w-3/4 rounded-md mb-5 px-3 py-2"
+          className="border-2 w-3/4 rounded-md mb-2 px-3 py-2"
           onChange={handleChange}
         />
+        {error.fullname && (
+          <div className="text-red-950 font-normal text-sm mb-4">
+            {error.fullname}
+          </div>
+        )}
         <label htmlFor="" className="font-semibold">
           Email Address
         </label>
@@ -27,9 +38,14 @@ function Stepone({ fullname, email, phone, handleChange }) {
           type="email"
           value={email}
           placeholder="e.g. Stephenking@lorem.com"
-          className="border-2 w-3/4 rounded-md mb-5 px-3 py-2"
+          className="border-2 w-3/4 rounded-md mb-2 px-3 py-2"
           onChange={handleChange}
         />
+        {error.email && (
+          <div className="text-red-950 font-normal text-sm mb-4 ">
+            {error.email}
+          </div>
+        )}
         <label htmlFor="" className="font-semibold">
           Phone Number
         </label>

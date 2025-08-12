@@ -5,6 +5,7 @@ import Stepone from "./pages/Stepone.jsx";
 import Steptwo from "./pages/Steptwo.jsx";
 import Stepthree from "./pages/Stepthree.jsx";
 import Stepfour from "./pages/stepfour.jsx";
+import Thankyou from "./pages/Thankyou.jsx";
 
 function Indicator({ num, step }) {
   return (
@@ -22,22 +23,40 @@ function Indicator({ num, step }) {
 
 function App() {
   const [step, setStep] = useState(1);
+  const [err, setError] = useState({});
 
   const [monthly, setMonthly] = useState(true);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
     phone: "",
-    plan: [],
+    plan: {},
     addon: [],
   });
 
   console.log(formData);
+
+  const validateInput = () => {
+    const err = {};
+    if (!formData.fullname) {
+      err.fullname = "Name is required";
+    }
+
+    if (!formData.email) {
+      err.email = "email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      err.email = "invalid email";
+    }
+
+    setError(err);
+    return Object.keys(err).length === 0;
+  };
+
   const HandleNextstep = () => {
-    if (step == 4) {
+    if (step == 5) {
       return;
     }
-    setStep((s) => s + 1);
+    if (validateInput()) setStep((s) => s + 1);
   };
   const HandleGoBack = () => {
     if (step == 1) {
@@ -67,8 +86,6 @@ function App() {
     { id: 4, step: "STEP 4", description: "SUMMARY" },
   ];
 
-  console.log(monthly);
-
   return (
     <>
       <div className="w-[inherit] bg-slate-300  mx-auto h-[90vh] grid grid-cols-1  mt-0 md:w-2/3 md:min-h-[80vh] md:grid-cols-3 md:p-3 md:mx-auto md:my-8 md:bg-white rounded-lg border-2">
@@ -92,8 +109,6 @@ function App() {
           ))}
         </div>
         <div className="step flex flex-col justify-start items-center h-[60%] p-3 bg-white w-[80%] mx-auto rounded-xl md:h-[100%] md:col-start-2 md:col-end-4 md:w-[100%] md:pt-3 md:relative">
-          <h1>{step}</h1>
-
           {/* <h2> 
           
           </h2> */}
@@ -103,6 +118,7 @@ function App() {
                 fullname={formData.fullname}
                 email={formData.email}
                 phone={formData.phone}
+                err={err}
                 handleChange={handleChange}
               />
             )}
@@ -122,6 +138,8 @@ function App() {
               />
             )}
             {step === 4 && <Stepfour formData={formData} setStep={setStep} />}
+
+            {step === 5 && <Thankyou />}
           </div>
           <div className="hidden w-3/4  md:flex justify-between absolute bottom-5">
             <button onClick={HandleGoBack} className="p-2 text-slate-950  ">

@@ -2,9 +2,25 @@ import React from "react";
 import AddonCard from "../components/AddonCard";
 
 function Stepthree({ setFormData, formData, monthly }) {
+  const info = formData;
   const HandleCardClick = (item) => {
+    // setFormData((prev) => {
+    //   const selected = prev.addon.includes(item);
+
+    //   return {
+    //     ...prev,
+    //     addon: selected
+    //       ? prev.addon.filter((value) => value !== item)
+    //       : [...prev.addon, item],
+    //   };
+    // });
+
     setFormData((prev) => ({ ...prev, addon: [...prev.addon, item] }));
-    console.log(formData);
+    // console.log(formData);
+    // console.log(info.addon);
+
+    console.log(info.addon);
+    console.log(item);
   };
 
   const addonMonthly = [

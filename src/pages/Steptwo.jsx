@@ -99,8 +99,6 @@ function Steptwo({
 
   return (
     <div className="w-full flex flex-col">
-      <h1>{monthly}</h1>
-      <h1>wellcom {here.fullname}</h1>
       <h1 className="text-3xl font-semibold mb-4">Select your plan</h1>
       <p className="text-md">
         you have the option of monthly or yearly billing.
