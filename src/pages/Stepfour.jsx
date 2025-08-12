@@ -41,17 +41,17 @@ function Stepfour({ formData, setStep, monthly }) {
             {here.addon.map((n) => (
               <div key={n.id} className="flex justify-between">
                 <div className="">{n.service}</div>
-                <div className="">{`+$${n.price}`}</div>
+                <div className="">{`$${n.price}`}</div>
               </div>
             ))}
           </>
         </div>
-        <div className="flex justify-between mb-4 w-full px-3 my-6">
+        <div className="flex  justify-between mb-4 w-full px-3 my-6">
           <div className="text-gray-500">
             {`total(${monthly ? "per month" : "per year"})`}
           </div>
           <div className="text-xl text-violet-950 font-bold ">
-            {`$${calculate()}/${monthly ? "mon" : "yr"}`}
+            {calculate() ? `$${calculate()}/${monthly ? "mon" : "yr"}` : ""}
           </div>
         </div>
       </div>
