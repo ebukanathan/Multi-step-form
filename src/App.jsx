@@ -4,7 +4,7 @@ import SideComponents from "./components/SideComponents";
 import Stepone from "./pages/Stepone.jsx";
 import Steptwo from "./pages/Steptwo.jsx";
 import Stepthree from "./pages/Stepthree.jsx";
-import Stepfour from "./pages/stepfour.jsx";
+import Stepfour from "./pages/Stepfour.jsx";
 import Thankyou from "./pages/Thankyou.jsx";
 
 function Indicator({ num, step }) {
