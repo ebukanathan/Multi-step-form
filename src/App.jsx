@@ -22,7 +22,7 @@ function Indicator({ num, step }) {
 }
 
 function App() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [err, setError] = useState({});
 
   const [monthly, setMonthly] = useState(true);
@@ -113,11 +113,7 @@ function App() {
           ))}
         </div>
         <div className="step flex flex-col justify-start items-center h-[60%] p-3 bg-white w-[80%] mx-auto rounded-xl md:h-[100%] md:col-start-2 md:col-end-4 md:w-[100%] md:pt-3 md:relative">
-          {/* <h2> 
-          
-          </h2> */}
           <div className="">
-            {step}
             {step === 1 && (
               <Stepone
                 fullname={formData.fullname}
