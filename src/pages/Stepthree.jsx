@@ -82,7 +82,7 @@ function Stepthree({ setFormData, formData, monthly }) {
   ));
 
   return (
-    <div className="flex flex-col w-[500px] ">
+    <div className="w-full flex flex-col md:w-[500px] ">
       <h1 className="text-3xl font-semibold mb-1">Pick Add-ons</h1>
       <p className="text-md font-normal my-3">
         Add-ons help enhance your gaming experience

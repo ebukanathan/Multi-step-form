@@ -8,6 +8,7 @@ function Steptwo({
   formData,
   monthly,
   HandleSwitch,
+  err,
 }) {
   const HandleCardClick = (item) => {
     setFormData((prev) => ({ ...prev, plan: item }));
@@ -94,6 +95,7 @@ function Steptwo({
   ));
 
   const here = formData;
+  const error = err;
 
   const check = monthly ? false : true;
 
@@ -103,7 +105,14 @@ function Steptwo({
       <p className="text-md">
         you have the option of monthly or yearly billing.
       </p>
-      <div className="w-full flex gap-3 my-4">{monthly ? Monthly : Yearly}</div>
+      <div className=" w-full flex flex-col  md:flex-row gap-3 my-4">
+        {monthly ? Monthly : Yearly}
+        {error.plan && (
+          <div className="text-red-950 font-normal text-sm mb-4 ">
+            {error.plan}
+          </div>
+        )}
+      </div>
       <div className="flex justify-around w-1/3 mx-3 ">
         <label htmlFor="">Monthly</label>
         {<ToggleSwitch HandleChange={HandleSwitch} check={check} />}

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Stepfour({ formData, setStep }) {
+function Stepfour({ formData, setStep, monthly }) {
   const here = formData;
 
   const calculate = () => {
@@ -15,8 +15,6 @@ function Stepfour({ formData, setStep }) {
     return total;
   };
 
-  console.log(calculate());
-
   calculate();
   return (
     <>
@@ -25,7 +23,7 @@ function Stepfour({ formData, setStep }) {
         <p className="text-md">
           Double-check everything looks OK before confirming
         </p>
-        <div className="w-full rounded-lg bg-slate-300 flex flex-col justify-start py-6 px-4  my-4">
+        <div className="w-full rounded-lg bg-slate-300 flex flex-col justify-start py-6 px-4  mt-2 mb-0">
           <div className="flex justify-between ">
             <div className="flex flex-col">
               <div className="font-bold text-xl">{here.plan.name}</div>
@@ -48,9 +46,13 @@ function Stepfour({ formData, setStep }) {
             ))}
           </>
         </div>
-        <div className="flex justify-between w-2/3 px-8 my-6">
-          <div className="text-gray-500">total</div>
-          <div className="text-lg text-violet-950">{calculate()}</div>
+        <div className="flex justify-between mb-4 w-full px-3 my-6">
+          <div className="text-gray-500">
+            {`total(${monthly ? "per month" : "per year"})`}
+          </div>
+          <div className="text-xl text-violet-950 font-bold ">
+            {`$${calculate()}/${monthly ? "mon" : "yr"}`}
+          </div>
         </div>
       </div>
     </>

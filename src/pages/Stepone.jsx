@@ -26,7 +26,7 @@ function Stepone({ fullname, email, phone, handleChange, err }) {
           onChange={handleChange}
         />
         {error.fullname && (
-          <div className="text-red-950 font-normal text-sm mb-4">
+          <div className="text-red-700 font-bold text-sm mb-4">
             {error.fullname}
           </div>
         )}
@@ -42,7 +42,7 @@ function Stepone({ fullname, email, phone, handleChange, err }) {
           onChange={handleChange}
         />
         {error.email && (
-          <div className="text-red-950 font-normal text-sm mb-4 ">
+          <div className="text-red-700 font-bold text-sm mb-4 ">
             {error.email}
           </div>
         )}
